@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>机战：钢铁巨舰 - 官方网站 | 机甲集结 决战宇宙之巅</title>
+<meta name="description" content="机战：钢铁巨舰官方手游 - 大型科幻机甲题材MMORPG，驾驶钢铁巨舰征战宇宙，海量机甲自由改装，星际舰队对决，支持iOS/安卓双端下载及PC模拟器游玩。">
+<meta name="keywords" content="机战钢铁巨舰,机甲手游,科幻手游,星际战争,钢铁巨舰下载,机战官方">
+<meta property="og:title" content="机战：钢铁巨舰 - 官方网站">
+<meta property="og:description" content="机甲集结，决战宇宙之巅！驾驶钢铁巨舰征战浩渺星际。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jz.fmbly.com/">
+<link rel="canonical" href="https://jz.fmbly.com/">
+<link rel="icon" type="image/png" href="assets/images/logo.png">
+<link rel="shortcut icon" type="image/png" href="assets/images/logo.png">
+<link rel="apple-touch-icon" href="assets/images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Rajdhani:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<style>
+/* ===== Variables ===== */
+:root{
+  --bg-void:#050710;--bg-dark:#0a0e1c;--bg-card:rgba(13,18,35,.85);--bg-panel:rgba(18,24,48,.65);
+  --cyan:#00e5ff;--cyan-dim:rgba(0,229,255,.15);--gold:#ffb300;--crimson:#e63946;
+  --purple:#7c4dff;--text:#fff;--text2:#a0aec0;--text3:#6b7280;
+  --border:rgba(0,229,255,.18);--border2:rgba(255,255,255,.08);
+  --glow:0 0 24px rgba(0,229,255,.25);
+  --grad-cyan:linear-gradient(135deg,#00d4ff,#7c4dff);
+  --grad-gold:linear-gradient(135deg,#ffb300,#ff6f00);
+  --grad-ios:linear-gradient(135deg,#2193b0,#6dd5ed);
+  --grad-android:linear-gradient(135deg,#ff8008,#ff5e3a);
+  --grad-pc:linear-gradient(135deg,#7b2ff7,#00d4ff);
+  --maxw:1280px;
+  --ff-d:'Orbitron',sans-serif;--ff-e:'Rajdhani',sans-serif;--ff-c:'Noto Sans SC',sans-serif;
+  --ff:var(--ff-e),var(--ff-c),-apple-system,sans-serif;
+}
+/* ===== Reset ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--ff);background:var(--bg-void);color:var(--text);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+/* ===== Background Effects ===== */
+.bg-layer{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.bg-stars{background:
+  radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,.8),transparent),
+  radial-gradient(1px 1px at 40% 70%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1px 1px at 60% 20%,rgba(255,255,255,.6),transparent),
+  radial-gradient(1px 1px at 80% 80%,rgba(255,255,255,.4),transparent),
+  radial-gradient(1px 1px at 10% 90%,rgba(0,229,255,.6),transparent),
+  radial-gradient(2px 2px at 70% 40%,rgba(255,255,255,.3),transparent),
+  radial-gradient(1px 1px at 90% 10%,rgba(255,179,0,.4),transparent),
+  radial-gradient(1px 1px at 30% 50%,rgba(255,255,255,.3),transparent),
+  radial-gradient(1px 1px at 55% 85%,rgba(255,255,255,.4),transparent),
+  radial-gradient(1px 1px at 85% 55%,rgba(0,229,255,.3),transparent);
+  background-size:200% 200%;animation:drift 60s linear infinite}
+.bg-nebula{background:
+  radial-gradient(ellipse 800px 600px at 15% 20%,rgba(124,77,255,.08),transparent),
+  radial-gradient(ellipse 600px 500px at 85% 30%,rgba(0,229,255,.06),transparent),
+  radial-gradient(ellipse 700px 500px at 50% 80%,rgba(230,57,70,.04),transparent)}
+@keyframes drift{0%{background-position:0 0}100%{background-position:200% 200%}}
+
+/* ===== Container ===== */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ===== Navbar ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;
+  background:rgba(5,7,16,.8);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);transition:all .3s}
+.nav.scrolled{background:rgba(5,7,16,.95);box-shadow:0 1px 30px rgba(0,229,255,.1)}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--ff-d);font-weight:700;font-size:1.05rem;letter-spacing:1px}
+.nav-logo-img{width:42px;height:42px;border-radius:8px;object-fit:cover;box-shadow:0 0 16px rgba(0,229,255,.3)}
+.nav-logo .name{background:var(--grad-cyan);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:4px}
+.nav-links a{font-size:.92rem;color:var(--text2);padding:8px 18px;border-radius:6px;transition:all .2s;position:relative}
+.nav-links a:hover{color:var(--text);background:var(--cyan-dim)}
+.nav-links a.active{color:var(--cyan);font-weight:600}
+.nav-links a.active::after{content:'';position:absolute;bottom:0;left:18px;right:18px;height:2px;background:var(--cyan);border-radius:1px;box-shadow:var(--glow)}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.nav-cta button{font-family:var(--ff-e);font-weight:700;font-size:.85rem;padding:8px 20px;border-radius:6px;background:var(--grad-cyan);color:#fff;letter-spacing:.5px;transition:all .2s;box-shadow:0 0 16px rgba(0,229,255,.2)}
+.nav-cta button:hover{transform:translateY(-1px);box-shadow:0 0 28px rgba(0,229,255,.4)}
+.nav-toggle{display:none;width:40px;height:40px;font-size:1.4rem;color:var(--text)}
+
+/* ===== Hero ===== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding-top:64px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-bg::after{content:'';position:absolute;inset:0;background:
+  linear-gradient(90deg,var(--bg-void) 0%,transparent 30%,transparent 60%,rgba(5,7,16,.6) 80%,var(--bg-void) 100%),
+  linear-gradient(0deg,var(--bg-void) 0%,transparent 30%,transparent 70%,rgba(5,7,16,.3) 100%)}
+.hero-content{position:relative;z-index:2;width:100%;display:flex;align-items:center;min-height:calc(100vh - 64px)}
+.hero-left{flex:0 0 55%;padding-right:40px}
+.hero-right{flex:1;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:24px}
+.hero-slogan{font-family:var(--ff-d);font-weight:900;font-size:clamp(2rem,5vw,4rem);line-height:1.1;letter-spacing:2px;
+  background:linear-gradient(135deg,#fff 0%,var(--cyan) 50%,var(--purple) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-shadow:0 0 60px rgba(0,229,255,.3);text-align:right}
+.hero-slogan .sub{display:block;font-size:clamp(1.2rem,3vw,2rem);background:linear-gradient(135deg,var(--gold),var(--crimson));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:4px}
+.hero-desc{font-size:1rem;color:var(--text2);text-align:right;max-width:420px;line-height:1.8}
+.hero-tags{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.hero-tag{padding:4px 14px;border-radius:99px;font-size:.75rem;font-weight:600;border:1px solid var(--border);background:var(--bg-panel);color:var(--cyan)}
+
+/* ===== Download Buttons ===== */
+.dl-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:flex-end;max-width:520px}
+.dl-btn{display:flex;align-items:center;justify-content:center;gap:0;padding:14px 28px;border-radius:10px;font-family:var(--ff-e);font-weight:700;font-size:1.05rem;color:#fff;transition:all .25s;position:relative;overflow:hidden;min-width:150px;text-align:center}
+.dl-btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.1);opacity:0;transition:opacity .2s}
+.dl-btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.dl-btn:hover::before{opacity:1}
+.dl-btn .label{display:flex;flex-direction:column;align-items:center;line-height:1.3}
+.dl-btn .label small{font-size:.68rem;font-weight:400;opacity:.8}
+.dl-btn.no-icon .label{font-size:1.1rem}
+.dl-ios{background:var(--grad-ios);box-shadow:0 4px 20px rgba(33,147,176,.3)}
+.dl-android{background:var(--grad-android);box-shadow:0 4px 20px rgba(255,128,8,.3)}
+.dl-pc{background:var(--grad-pc);box-shadow:0 4px 20px rgba(123,47,247,.3)}
+.dl-qr{background:rgba(255,255,255,.95);padding:6px;border-radius:10px;width:92px;height:92px;flex:0 0 auto;box-shadow:var(--glow)}
+.dl-qr img{width:100%;height:100%;border-radius:6px}
+.dl-qr-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
+.dl-qr-wrap span{font-size:.7rem;color:var(--text2);text-align:center}
+.dl-main{display:flex;flex-direction:column;align-items:center;gap:16px}
+.dl-qr-row{display:flex;gap:20px;justify-content:center}
+.dl-center{justify-content:center !important;max-width:none !important}
+.dl-pc-single{min-width:200px}
+
+/* ===== Section Title ===== */
+.sec-title{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+.sec-title .icon{width:44px;height:44px;border-radius:10px;background:var(--grad-cyan);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--bg-void);font-weight:900;box-shadow:var(--glow)}
+.sec-title h2{font-family:var(--ff-d);font-weight:700;font-size:1.8rem;letter-spacing:2px;
+  background:linear-gradient(135deg,#fff,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sec-title .line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+
+/* ===== Features Carousel ===== */
+.features{padding:80px 0;position:relative}
+.carousel{position:relative;max-width:1000px;margin:0 auto;border-radius:16px;overflow:hidden;
+  border:1px solid var(--border);background:var(--bg-card);box-shadow:0 0 40px rgba(0,229,255,.08)}
+.carousel-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.carousel-slide{flex:0 0 100%;position:relative;aspect-ratio:16/9;overflow:hidden}
+.carousel-slide img{width:100%;height:100%;object-fit:cover}
+.carousel-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,16,.7) 0%,transparent 50%)}
+.carousel-caption{position:absolute;bottom:40px;left:40px;z-index:2}
+.carousel-caption h3{font-family:var(--ff-d);font-weight:900;font-size:clamp(1.4rem,3vw,2.4rem);letter-spacing:2px;
+  background:linear-gradient(135deg,#fff,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-shadow:0 0 40px rgba(0,229,255,.3)}
+.carousel-caption p{font-size:1rem;color:var(--text2);margin-top:8px}
+.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  width:48px;height:48px;border-radius:50%;background:rgba(5,7,16,.6);backdrop-filter:blur(8px);
+  border:1px solid var(--border);color:var(--cyan);font-size:1.5rem;display:flex;align-items:center;justify-content:center;
+  transition:all .2s}
+.carousel-arrow:hover{background:rgba(0,229,255,.15);box-shadow:var(--glow)}
+.carousel-arrow.prev{left:16px}
+.carousel-arrow.next{right:16px}
+.carousel-dots{display:flex;gap:8px;justify-content:center;margin-top:20px}
+.carousel-dots button{width:10px;height:10px;border-radius:50%;background:rgba(0,229,255,.2);transition:all .3s}
+.carousel-dots button.active{width:30px;border-radius:5px;background:var(--cyan);box-shadow:var(--glow)}
+
+/* ===== News + Server Section ===== */
+.news-section{padding:60px 0 80px}
+.news-grid{display:grid;grid-template-columns:1fr 1.3fr .8fr;gap:20px}
+.news-panel{background:var(--bg-card);border:1px solid var(--border2);border-radius:12px;overflow:hidden}
+.news-promo{position:relative;aspect-ratio:4/5;overflow:hidden}
+.news-promo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.news-promo:hover img{transform:scale(1.05)}
+.news-promo::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,7,16,.9) 0%,transparent 50%)}
+.news-promo-caption{position:absolute;bottom:24px;left:24px;right:24px;z-index:2}
+.news-promo-caption h3{font-family:var(--ff-d);font-weight:700;font-size:1.3rem;
+  background:linear-gradient(135deg,#fff,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.news-promo-caption p{font-size:.85rem;color:var(--text2);margin-top:4px}
+.news-tabs{display:flex;border-bottom:1px solid var(--border2)}
+.news-tabs button{flex:1;padding:14px 8px;font-size:.9rem;color:var(--text3);font-weight:600;
+  border-bottom:2px solid transparent;transition:all .2s;font-family:var(--ff-c)}
+.news-tabs button.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+.news-tabs button:hover{color:var(--text)}
+.news-list{padding:8px 20px}
+.news-list li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border2);cursor:pointer;transition:all .2s}
+.news-list li:last-child{border-bottom:none}
+.news-list li:hover{padding-left:8px}
+.news-cat{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.news-cat.新闻{background:rgba(0,229,255,.15);color:var(--cyan)}
+.news-cat.公告{background:rgba(255,179,0,.15);color:var(--gold)}
+.news-cat.活动{background:rgba(230,57,70,.15);color:var(--crimson)}
+.news-cat.攻略{background:rgba(124,77,255,.15);color:var(--purple)}
+.news-title{flex:1;font-size:.85rem;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .2s}
+.news-list li:hover .news-title{color:var(--text)}
+.news-date{font-size:.75rem;color:var(--text3);flex-shrink:0;font-family:var(--ff-e)}
+
+/* Server List */
+.server-panel{display:flex;flex-direction:column}
+.server-header{padding:14px 20px;border-bottom:1px solid var(--border2);
+  background:linear-gradient(135deg,rgba(0,229,255,.08),transparent)}
+.server-header h3{font-family:var(--ff-d);font-size:1rem;letter-spacing:1px;color:var(--cyan)}
+.server-header h3 .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;margin-right:8px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.server-list{flex:1;overflow-y:auto;max-height:380px}
+.server-list li{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;border-bottom:1px solid var(--border2);font-size:.82rem;transition:all .2s}
+.server-list li:hover{background:var(--cyan-dim);padding-left:24px}
+.server-name{color:var(--text2);font-weight:500}
+.server-name .new{font-size:.65rem;padding:1px 6px;border-radius:3px;background:var(--crimson);color:#fff;margin-left:6px;font-weight:700}
+.server-time{color:var(--text3);font-family:var(--ff-e);font-size:.78rem}
+
+/* ===== QR Download Section ===== */
+.qr-section{padding:100px 0;position:relative;overflow:hidden}
+.qr-section::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 600px 500px at center,rgba(0,229,255,.06),transparent)}
+.qr-wrap{display:flex;flex-direction:column;align-items:center;gap:32px;position:relative;z-index:2}
+.qr-title{font-family:var(--ff-d);font-weight:700;font-size:clamp(1.5rem,4vw,2.5rem);letter-spacing:6px;
+  background:linear-gradient(135deg,#fff,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-shadow:0 0 60px rgba(0,229,255,.2)}
+.qr-circle{position:relative;width:280px;height:280px}
+.qr-circle .glow{position:absolute;inset:-20px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,229,255,.25),transparent 70%);animation:breathe 3s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.05);opacity:1}}
+.qr-circle .ring{position:absolute;inset:0;border-radius:50%;border:2px solid var(--border);
+  background:var(--bg-card);display:flex;align-items:center;justify-content:center}
+.qr-circle .ring::before{content:'';position:absolute;inset:-4px;border-radius:50%;
+  border:1px solid rgba(0,229,255,.1);animation:spin 20s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.qr-circle .ring::after{content:'';position:absolute;inset:-12px;border-radius:50%;
+  border:1px dashed rgba(0,229,255,.15);animation:spin 30s linear infinite reverse}
+.qr-code-img{width:200px;height:200px;border-radius:12px;background:#fff;padding:8px}
+.qr-code-img img{width:100%;height:100%;border-radius:8px}
+.qr-cloud{position:absolute;width:120px;height:40px;opacity:.4}
+.qr-cloud.left{left:-80px;top:50%;transform:translateY(-50%)}
+.qr-cloud.right{right:-80px;top:50%;transform:translateY(-50%) scaleX(-1)}
+.qr-hint{font-size:.9rem;color:var(--text2);text-align:center}
+.qr-hint strong{color:var(--cyan)}
+
+/* ===== Footer ===== */
+.footer{border-top:1px solid var(--border2);background:rgba(5,7,16,.6);padding:40px 0 24px}
+.footer-top{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:24px;flex-wrap:wrap}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo .badge{width:36px;height:36px;border-radius:8px;background:var(--grad-gold);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--bg-void);font-weight:900}
+.footer-logo span{font-family:var(--ff-d);font-weight:700;font-size:1.1rem;color:var(--gold)}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:.82rem;color:var(--text3);transition:color .2s}
+.footer-links a:hover{color:var(--cyan)}
+.footer-info{text-align:center;color:var(--text3);font-size:.76rem;line-height:2}
+.footer-info p{margin:0}
+
+/* Age Rating Badge */
+.age-badge{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:90;
+  width:56px;border-radius:10px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.4);
+  background:linear-gradient(180deg,#ff9500 0%,#ff9500 40%,#fff 40%,#fff 100%);
+  text-align:center;padding:6px 0 8px;cursor:pointer;transition:all .3s}
+.age-badge:hover{transform:translateY(-50%) scale(1.05)}
+.age-badge .num{font-family:var(--ff-d);font-size:1.4rem;font-weight:900;color:#fff;line-height:1.2}
+.age-badge .org{font-size:.5rem;color:#fff;font-weight:700;letter-spacing:1px}
+.age-badge .txt{font-size:.58rem;color:#333;font-weight:700;margin-top:2px}
+
+/* ===== Scroll Reveal ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ===== Responsive ===== */
+@media(max-width:1024px){
+  .news-grid{grid-template-columns:1fr 1fr;}
+  .server-panel{grid-column:1/-1}
+  .hero-left{flex:0 0 100%;padding-right:0}
+  .hero-right{align-items:center;text-align:center}
+  .hero-slogan,.hero-desc{text-align:center}
+  .hero-tags{justify-content:center}
+  .dl-row{justify-content:center}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-toggle{display:flex;align-items:center;justify-content:center}
+  .nav-links.open{display:flex;position:absolute;top:64px;left:0;right:0;
+    flex-direction:column;background:rgba(5,7,16,.98);padding:16px;gap:0;border-bottom:1px solid var(--border)}
+  .nav-links.open a{padding:12px 16px}
+  .hero{min-height:auto;padding-top:80px;padding-bottom:40px}
+  .hero-content{flex-direction:column}
+  .hero-right{align-items:center}
+  .dl-row{justify-content:center}
+  .dl-btn{min-width:120px;padding:12px 20px;font-size:1rem}
+  .dl-qr{width:76px;height:76px}
+  .dl-qr-row{gap:12px}
+  .news-grid{grid-template-columns:1fr}
+  .news-promo{aspect-ratio:16/9}
+  .features{padding:50px 0}
+  .carousel-caption{bottom:20px;left:20px}
+  .qr-section{padding:60px 0}
+  .qr-circle{width:220px;height:220px}
+  .qr-code-img{width:160px;height:160px}
+  .age-badge{right:10px;width:44px}
+  .age-badge .num{font-size:1.1rem}
+  .footer-links{justify-content:center}
+}
+@media(max-width:480px){
+  .dl-row{flex-direction:column;align-items:center}
+  .dl-btn{width:100%;max-width:260px;justify-content:center}
+  .sec-title h2{font-size:1.4rem}
+  .nav-cta button{padding:6px 14px;font-size:.78rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Background Layers -->
+<div class="bg-layer bg-stars"></div>
+<div class="bg-layer bg-nebula"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">
+      <img src="assets/images/logo.png" alt="机战：钢铁巨舰" class="nav-logo-img">
+      <span class="name">机战：钢铁巨舰</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#hero" class="active">首页</a>
+      <a href="#features" class="">游戏特色</a>
+      <a href="#news" class="">新闻公告</a>
+      <a href="#server">开服列表</a>
+      <a href="#download">下载游戏</a>
+    </div>
+    <div class="nav-cta">
+      <button onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">立即下载</button>
+      <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="assets/images/hero-mecha.jpg" alt="机战钢铁巨舰 机甲主视觉" loading="eager">
+  </div>
+  <div class="hero-content wrap">
+    <div class="hero-left"></div>
+    <div class="hero-right">
+      <div class="hero-tags">
+        <span class="hero-tag">科幻机甲</span>
+        <span class="hero-tag">MMORPG</span>
+        <span class="hero-tag">星际舰队</span>
+        <span class="hero-tag">iOS/安卓/PC</span>
+      </div>
+      <h1 class="hero-slogan">机甲集结<span class="sub">决战宇宙之巅</span></h1>
+      <p class="hero-desc">驾驶钢铁巨舰，征战浩渺星际。海量机甲自由改装，组建你的星际舰队，开启属于你的宇宙征途。</p>
+      <!-- Download Buttons -->
+      <div class="dl-main" id="download">
+        <div class="dl-row dl-center">
+          <a class="dl-btn dl-ios no-icon" href="https://sdkn-ldy.zhangyu39.com/?app_id=7164&amp;promote_id=1778" target="_blank" rel="noopener">
+            <span class="label">苹果下载</span>
+          </a>
+          <a class="dl-btn dl-android no-icon" href="https://sdkn-ldy.zhangyu39.com/?app_id=7609&amp;promote_id=1778" target="_blank" rel="noopener">
+            <span class="label">安卓下载</span>
+          </a>
+        </div>
+        <div class="dl-qr-row">
+          <div class="dl-qr-wrap">
+            <div class="dl-qr"><img src="assets/images/qr-ios.png" alt="扫码下载 iOS 版 机战钢铁巨舰" loading="lazy"></div>
+            <span>苹果扫码</span>
+          </div>
+          <div class="dl-qr-wrap">
+            <div class="dl-qr"><img src="assets/images/qr-android.png" alt="扫码下载安卓版 机战钢铁巨舰" loading="lazy"></div>
+            <span>安卓扫码</span>
+          </div>
+        </div>
+        <a class="dl-btn dl-pc no-icon dl-pc-single" href="https://mumu.163.com" target="_blank" rel="noopener">
+          <span class="label">MuMu模拟器下载</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Game Features Carousel -->
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="sec-title reveal visible">
+      <span class="icon">★</span>
+      <h2>游戏特色</h2>
+      <span class="line"></span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="carousel reveal visible" id="carousel">
+      <div class="carousel-track" id="carouselTrack" style="transform: translateX(0%);">
+        <div class="carousel-slide">
+          <img src="assets/images/hero-mecha.jpg" alt="机甲重装回归" loading="lazy">
+          <div class="carousel-caption"><h3>机甲重装回归</h3><p>对决浩渺星际，钢铁巨兽重返战场</p></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/feat-1.jpg" alt="火力全开" loading="lazy">
+          <div class="carousel-caption"><h3>火力全开</h3><p>驾驭钢铁巨兽，全维度火力覆盖</p></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/feat-2.jpg" alt="舰队出征" loading="lazy">
+          <div class="carousel-caption"><h3>舰队出征</h3><p>组建星际舰队，征战星辰大海</p></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/feat-3.jpg" alt="自由改装" loading="lazy">
+          <div class="carousel-caption"><h3>自由改装</h3><p>打造专属机甲，定制你的战斗风格</p></div>
+        </div>
+      </div>
+      <button class="carousel-arrow prev" onclick="moveSlide(-1)">‹</button>
+      <button class="carousel-arrow next" onclick="moveSlide(1)">›</button>
+    </div>
+    <div class="carousel-dots" id="carouselDots"><button class="active"></button><button class=""></button><button class=""></button><button class=""></button></div>
+  </div>
+</section>
+
+<!-- News + Server Section -->
+<section class="news-section" id="news">
+  <div class="wrap">
+    <div class="sec-title reveal visible">
+      <span class="icon">◆</span>
+      <h2>新闻公告</h2>
+      <span class="line"></span>
+    </div>
+    <div class="news-grid">
+      <!-- Promo Banner -->
+      <div class="news-panel reveal visible">
+        <div class="news-promo">
+          <img src="assets/images/feat-1.jpg" alt="机甲对决 火力全开" loading="lazy">
+          <div class="news-promo-caption">
+            <h3>机甲对决 火力全开</h3>
+            <p>全平台正式启航，立即加入战场</p>
+          </div>
+        </div>
+      </div>
+      <!-- News Tabs + List -->
+      <div class="news-panel reveal visible" id="server">
+        <div class="news-tabs" id="newsTabs">
+          <button class="active" data-tab="latest">最新</button>
+          <button data-tab="notice">公告</button>
+          <button data-tab="event">活动</button>
+          <button data-tab="guide">攻略</button>
+        </div>
+        <ul class="news-list" id="newsList"><li><span class="news-cat 新闻">新闻</span><span class="news-title">《机战：钢铁巨舰》全平台正式启航！星际航路全面开启</span><span class="news-date">09-09</span></li><li><span class="news-cat 新闻">新闻</span><span class="news-title">启动特权 | 盒子启动，领取你的专属幸运礼包</span><span class="news-date">09-08</span></li><li><span class="news-cat 活动">活动</span><span class="news-title">倒计时1天 | 预下载开启，全服战机任遨游</span><span class="news-date">09-08</span></li><li><span class="news-cat 活动">活动</span><span class="news-title">倒计时2天 | 「每日签到」助力旅程，引擎已就绪</span><span class="news-date">09-07</span></li><li><span class="news-cat 攻略">攻略</span><span class="news-title">机战百科 | Vol.4 远程武器详解</span><span class="news-date">09-07</span></li><li><span class="news-cat 活动">活动</span><span class="news-title">倒计时3天 | 「福利中心」已就位，跃迁目标已锁定</span><span class="news-date">09-06</span></li></ul>
+      </div>
+      <!-- Server List -->
+      <div class="news-panel server-panel reveal visible">
+        <div class="server-header">
+          <h3><span class="pulse"></span>开服列表</h3>
+        </div>
+        <ul class="server-list" id="serverList"><li><span class="server-name">钢铁巨舰57区<span class="new">新</span></span><span class="server-time">2026-09-10 11:40</span></li><li><span class="server-name">钢铁巨舰56区<span class="new">新</span></span><span class="server-time">2026-09-10 11:40</span></li><li><span class="server-name">钢铁巨舰55区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰54区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰53区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰52区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰51区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰50区</span><span class="server-time">2026-09-10 07:00</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QR Download Section -->
+<section class="qr-section" id="qrDownload">
+  <div class="wrap">
+    <div class="qr-wrap reveal visible">
+      <h2 class="qr-title">机战：钢铁巨舰 官方手游</h2>
+      <div class="qr-circle">
+        <div class="glow"></div>
+        <div class="ring">
+          <div class="qr-code-img">
+            <img src="assets/images/qr-ios.png" alt="机战钢铁巨舰 iOS下载二维码" loading="lazy">
+          </div>
+        </div>
+        <svg class="qr-cloud left" viewBox="0 0 120 40" fill="none"><path d="M10 20 Q5 20 5 15 Q5 8 12 8 Q15 2 25 5 Q35 0 42 8 Q55 3 60 12 Q70 8 72 18 Q80 15 82 22 Q88 25 85 30 Q80 35 72 32 Q65 38 58 33 Q48 38 40 33 Q30 38 22 34 Q12 35 10 28 Q5 28 10 20 Z" stroke="rgba(255,179,0,.4)" stroke-width="1"/><path d="M95 20 L115 20" stroke="rgba(255,179,0,.3)" stroke-width="1"/></svg>
+        <svg class="qr-cloud right" viewBox="0 0 120 40" fill="none"><path d="M10 20 Q5 20 5 15 Q5 8 12 8 Q15 2 25 5 Q35 0 42 8 Q55 3 60 12 Q70 8 72 18 Q80 15 82 22 Q88 25 85 30 Q80 35 72 32 Q65 38 58 33 Q48 38 40 33 Q30 38 22 34 Q12 35 10 28 Q5 28 10 20 Z" stroke="rgba(255,179,0,.4)" stroke-width="1"/><path d="M95 20 L115 20" stroke="rgba(255,179,0,.3)" stroke-width="1"/></svg>
+      </div>
+      <div class="qr-hint">扫码下载 <strong>机战：钢铁巨舰</strong><br>支持 iOS / 安卓 双端</div>
+      <div class="dl-main" style="justify-content:center">
+        <div class="dl-row dl-center">
+          <a class="dl-btn dl-ios no-icon" href="https://sdkn-ldy.zhangyu39.com/?app_id=7164&amp;promote_id=1778" target="_blank" rel="noopener">
+            <span class="label">苹果下载</span>
+          </a>
+          <a class="dl-btn dl-android no-icon" href="https://sdkn-ldy.zhangyu39.com/?app_id=7609&amp;promote_id=1778" target="_blank" rel="noopener">
+            <span class="label">安卓下载</span>
+          </a>
+        </div>
+        <a class="dl-btn dl-pc no-icon dl-pc-single" href="https://mumu.163.com" target="_blank" rel="noopener">
+          <span class="label">MuMu模拟器下载</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <img src="assets/images/logo.png" alt="机战：钢铁巨舰" class="nav-logo-img" style="width:36px;height:36px">
+        <span>机战：钢铁巨舰</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">关于我们</a>
+        <a href="#">联系我们</a>
+        <a href="#">用户协议</a>
+        <a href="#">家长监护</a>
+        <a href="#">实名认证</a>
+        <a href="#">申请开票</a>
+        <a href="#">隐私政策</a>
+      </div>
+    </div>
+    <div class="footer-info">
+      <p>Copyright © 2015-2026 All Rights Reserved. 机战：钢铁巨舰</p>
+      <p>信息网络传播视听节目备案 &nbsp;|&nbsp; 网络文化经营许可证 &nbsp;|&nbsp; 出版物经营许可证</p>
+      <p>适龄提示：本游戏适合16岁（含）以上玩家 &nbsp;|&nbsp; 健康游戏忠告：抵制不良游戏 拒绝盗版游戏 适度游戏益脑 沉迷游戏伤身 合理安排时间 享受健康生活</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Age Rating Badge -->
+<div class="age-badge" title="适龄提示 16+">
+  <div class="num">16+</div>
+  <div class="org">CADPA</div>
+  <div class="txt">适龄提示</div>
+</div>
+
+<script>
+/* ===== Navbar Scroll ===== */
+window.addEventListener('scroll',function(){
+  var nav=document.getElementById('nav');
+  nav.classList.toggle('scrolled',window.scrollY>40);
+  // active nav link
+  var sections=document.querySelectorAll('section[id]');
+  var cur='';
+  sections.forEach(function(s){
+    if(window.scrollY>=s.offsetTop-120) cur=s.id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.classList.toggle('active',a.getAttribute('href')==='#'+cur);
+  });
+});
+
+/* ===== Carousel ===== */
+var slides=document.querySelectorAll('.carousel-slide');
+var current=0,total=slides.length;
+var track=document.getElementById('carouselTrack');
+var dotsContainer=document.getElementById('carouselDots');
+
+// Build dots
+for(var i=0;i<total;i++){
+  (function(idx){
+    var b=document.createElement('button');
+    if(idx===0)b.className='active';
+    b.onclick=function(){goSlide(idx)};
+    dotsContainer.appendChild(b);
+  })(i);
+}
+
+function goSlide(idx){
+  current=idx;
+  if(current<0)current=total-1;
+  if(current>=total)current=0;
+  track.style.transform='translateX(-'+current*100+'%)';
+  document.querySelectorAll('#carouselDots button').forEach(function(d,i){
+    d.classList.toggle('active',i===current);
+  });
+}
+function moveSlide(dir){goSlide(current+dir)}
+
+// Auto play
+var autoTimer=setInterval(function(){goSlide(current+1)},5000);
+document.getElementById('carousel').addEventListener('mouseenter',function(){clearInterval(autoTimer)});
+document.getElementById('carousel').addEventListener('mouseleave',function(){autoTimer=setInterval(function(){goSlide(current+1)},5000)});
+
+// Touch swipe
+var touchX=0;
+track.addEventListener('touchstart',function(e){touchX=e.touches[0].clientX},{passive:true});
+track.addEventListener('touchend',function(e){
+  var dx=e.changedTouches[0].clientX-touchX;
+  if(Math.abs(dx)>40)moveSlide(dx>0?-1:1);
+});
+
+/* ===== News Tabs ===== */
+var newsData={
+  latest:[
+    {cat:'新闻',title:'《机战：钢铁巨舰》全平台正式启航！星际航路全面开启',date:'09-09'},
+    {cat:'新闻',title:'启动特权 | 盒子启动，领取你的专属幸运礼包',date:'09-08'},
+    {cat:'活动',title:'倒计时1天 | 预下载开启，全服战机任遨游',date:'09-08'},
+    {cat:'活动',title:'倒计时2天 | 「每日签到」助力旅程，引擎已就绪',date:'09-07'},
+    {cat:'攻略',title:'机战百科 | Vol.4 远程武器详解',date:'09-07'},
+    {cat:'活动',title:'倒计时3天 | 「福利中心」已就位，跃迁目标已锁定',date:'09-06'}
+  ],
+  notice:[
+    {cat:'公告',title:'《机战：钢铁巨舰》9月10日正式公测公告',date:'09-09'},
+    {cat:'公告',title:'关于服务器开服时间安排的说明',date:'09-08'},
+    {cat:'公告',title:'游戏版本更新维护公告 v1.0.5',date:'09-07'},
+    {cat:'公告',title:'关于客户端预下载开启的公告',date:'09-06'},
+    {cat:'公告',title:'游戏实名认证及防沉迷系统说明',date:'09-05'},
+    {cat:'公告',title:'用户协议与隐私政策更新公告',date:'09-04'}
+  ],
+  event:[
+    {cat:'活动',title:'开服七日礼 | 登录即送SSR机甲碎片',date:'09-09'},
+    {cat:'活动',title:'星际远征 | 首通奖励翻倍活动开启',date:'09-08'},
+    {cat:'活动',title:'机甲工坊 | 限时改装折扣50%off',date:'09-07'},
+    {cat:'活动',title:'舰队集结 | 组队参与赢限定涂装',date:'09-06'},
+    {cat:'活动',title:'签到福利 | 每日签到连签7天领大礼',date:'09-05'},
+    {cat:'活动',title:'冲级大赛 | 首周冲级赢实物大奖',date:'09-04'}
+  ],
+  guide:[
+    {cat:'攻略',title:'机战百科 | Vol.4 远程武器详解',date:'09-07'},
+    {cat:'攻略',title:'机战百科 | Vol.3 近战格斗机甲推荐',date:'09-06'},
+    {cat:'攻略',title:'机战百科 | Vol.2 机甲改装入门指南',date:'09-05'},
+    {cat:'攻略',title:'机战百科 | Vol.1 新手开荒全攻略',date:'09-04'},
+    {cat:'攻略',title:'舰队系统详解 | 如何组建你的星际舰队',date:'09-03'},
+    {cat:'攻略',title:'资源采集指南 | 星际矿场高效开采',date:'09-02'}
+  ]
+};
+
+function renderNews(tab){
+  var list=document.getElementById('newsList');
+  list.innerHTML='';
+  newsData[tab].forEach(function(item){
+    var li=document.createElement('li');
+    li.innerHTML='<span class="news-cat '+item.cat+'">'+item.cat+'</span>'+
+      '<span class="news-title">'+item.title+'</span>'+
+      '<span class="news-date">'+item.date+'</span>';
+    list.appendChild(li);
+  });
+}
+
+document.getElementById('newsTabs').addEventListener('click',function(e){
+  if(e.target.tagName==='BUTTON'){
+    document.querySelectorAll('#newsTabs button').forEach(function(b){b.classList.remove('active')});
+    e.target.classList.add('active');
+    renderNews(e.target.dataset.tab);
+  }
+});
+renderNews('latest');
+
+/* ===== Server List ===== */
+var servers=[
+  {name:'钢铁巨舰57区',time:'09-10 11:40',isNew:true},
+  {name:'钢铁巨舰56区',time:'09-10 11:40',isNew:true},
+  {name:'钢铁巨舰55区',time:'09-10 09:00'},
+  {name:'钢铁巨舰54区',time:'09-10 09:00'},
+  {name:'钢铁巨舰53区',time:'09-10 09:00'},
+  {name:'钢铁巨舰52区',time:'09-10 09:00'},
+  {name:'钢铁巨舰51区',time:'09-10 09:00'},
+  {name:'钢铁巨舰50区',time:'09-10 07:00'}
+];
+var sList=document.getElementById('serverList');
+servers.forEach(function(s){
+  var li=document.createElement('li');
+  li.innerHTML='<span class="server-name">'+s.name+(s.isNew?'<span class="new">新</span>':'')+'</span>'+
+    '<span class="server-time">2026-'+s.time+'</span>';
+  sList.appendChild(li);
+});
+
+/* ===== Scroll Reveal ===== */
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el)});
+
+/* ===== Smooth nav close on mobile ===== */
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+</script>
+
+
+</body></html>
