@@ -299,14 +299,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 <div class="bg-layer bg-nebula"></div>
 
 <!-- Navigation -->
-<nav class="nav" id="nav">
+<nav class="nav scrolled" id="nav">
   <div class="nav-inner">
     <a class="nav-logo" href="#hero">
       <img src="assets/images/logo.png" alt="机战：钢铁巨舰" class="nav-logo-img">
       <span class="name">机战：钢铁巨舰</span>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="#hero" class="active">首页</a>
+      <a href="#hero" class="">首页</a>
       <a href="#features" class="">游戏特色</a>
       <a href="#news" class="">新闻公告</a>
       <a href="#server">开服列表</a>
@@ -337,15 +337,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       <p class="hero-desc">驾驶钢铁巨舰，征战浩渺星际。海量机甲自由改装，组建你的星际舰队，开启属于你的宇宙征途。</p>
       <!-- Download Buttons -->
       <div class="dl-main" id="download">
-        <div class="dl-row dl-center">
-          <a class="dl-btn dl-ios no-icon" href="https://sdkn-ldy.zhangyu39.com/?app_id=7164&amp;promote_id=1778" target="_blank" rel="noopener">
-            <span class="label">苹果下载</span>
-          </a>
-          <a class="dl-btn dl-android no-icon" href="https://sdkn-ldy.zhangyu39.com/?app_id=7609&amp;promote_id=1778" target="_blank" rel="noopener">
+        <a class="dl-btn dl-android no-icon" href="https://sdkn-ldy.zhangyu39.com/?app_id=7609&amp;promote_id=1778" target="_blank" rel="noopener" style="align-self: center;">
             <span class="label">安卓下载</span>
-          </a>
+          </a><a class="dl-btn dl-ios no-icon" href="https://sdkn-ldy.zhangyu39.com/?app_id=7164&amp;promote_id=1778" target="_blank" rel="noopener" style="">
+            <span class="label">苹果下载</span>
+          </a><div class="dl-row dl-center" style="">
+          
+          
         </div>
-        <div class="dl-qr-row">
+        <div class="dl-qr-row" style="">
           <div class="dl-qr-wrap">
             <div class="dl-qr"><img src="assets/images/qr-ios.png" alt="扫码下载 iOS 版 机战钢铁巨舰" loading="lazy"></div>
             <span>苹果扫码</span>
@@ -355,7 +355,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
             <span>安卓扫码</span>
           </div>
         </div>
-        <a class="dl-btn dl-pc no-icon dl-pc-single" href="https://mumu.163.com" target="_blank" rel="noopener">
+        <a class="dl-btn dl-pc no-icon dl-pc-single" href="https://mumu.163.com" target="_blank" rel="noopener" style="">
           <span class="label">MuMu模拟器下载</span>
         </a>
       </div>
@@ -374,7 +374,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   </div>
   <div class="wrap">
     <div class="carousel reveal visible" id="carousel">
-      <div class="carousel-track" id="carouselTrack" style="transform: translateX(0%);">
+      <div class="carousel-track" id="carouselTrack" style="transform: translateX(-300%);">
         <div class="carousel-slide">
           <img src="assets/images/hero-mecha.jpg" alt="机甲重装回归" loading="lazy">
           <div class="carousel-caption"><h3>机甲重装回归</h3><p>对决浩渺星际，钢铁巨兽重返战场</p></div>
@@ -395,7 +395,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       <button class="carousel-arrow prev" onclick="moveSlide(-1)">‹</button>
       <button class="carousel-arrow next" onclick="moveSlide(1)">›</button>
     </div>
-    <div class="carousel-dots" id="carouselDots"><button class="active"></button><button class=""></button><button class=""></button><button class=""></button></div>
+    <div class="carousel-dots" id="carouselDots"><button class=""></button><button class=""></button><button class=""></button><button class="active"></button><button class=""></button><button></button><button></button><button></button></div>
   </div>
 </section>
 
@@ -433,7 +433,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
         <div class="server-header">
           <h3><span class="pulse"></span>开服列表</h3>
         </div>
-        <ul class="server-list" id="serverList"><li><span class="server-name">钢铁巨舰57区<span class="new">新</span></span><span class="server-time">2026-09-10 11:40</span></li><li><span class="server-name">钢铁巨舰56区<span class="new">新</span></span><span class="server-time">2026-09-10 11:40</span></li><li><span class="server-name">钢铁巨舰55区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰54区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰53区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰52区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰51区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰50区</span><span class="server-time">2026-09-10 07:00</span></li></ul>
+        <ul class="server-list" id="serverList"><li><span class="server-name">钢铁巨舰57区<span class="new">新</span></span><span class="server-time">2026-09-10 11:40</span></li><li><span class="server-name">钢铁巨舰56区<span class="new">新</span></span><span class="server-time">2026-09-10 11:40</span></li><li><span class="server-name">钢铁巨舰55区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰54区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰53区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰52区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰51区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰50区</span><span class="server-time">2026-09-10 07:00</span></li><li><span class="server-name">钢铁巨舰57区<span class="new">新</span></span><span class="server-time">2026-09-10 11:40</span></li><li><span class="server-name">钢铁巨舰56区<span class="new">新</span></span><span class="server-time">2026-09-10 11:40</span></li><li><span class="server-name">钢铁巨舰55区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰54区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰53区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰52区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰51区</span><span class="server-time">2026-09-10 09:00</span></li><li><span class="server-name">钢铁巨舰50区</span><span class="server-time">2026-09-10 07:00</span></li></ul>
       </div>
     </div>
   </div>
@@ -451,8 +451,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
             <img src="assets/images/qr-ios.png" alt="机战钢铁巨舰 iOS下载二维码" loading="lazy">
           </div>
         </div>
-        <svg class="qr-cloud left" viewBox="0 0 120 40" fill="none"><path d="M10 20 Q5 20 5 15 Q5 8 12 8 Q15 2 25 5 Q35 0 42 8 Q55 3 60 12 Q70 8 72 18 Q80 15 82 22 Q88 25 85 30 Q80 35 72 32 Q65 38 58 33 Q48 38 40 33 Q30 38 22 34 Q12 35 10 28 Q5 28 10 20 Z" stroke="rgba(255,179,0,.4)" stroke-width="1"/><path d="M95 20 L115 20" stroke="rgba(255,179,0,.3)" stroke-width="1"/></svg>
-        <svg class="qr-cloud right" viewBox="0 0 120 40" fill="none"><path d="M10 20 Q5 20 5 15 Q5 8 12 8 Q15 2 25 5 Q35 0 42 8 Q55 3 60 12 Q70 8 72 18 Q80 15 82 22 Q88 25 85 30 Q80 35 72 32 Q65 38 58 33 Q48 38 40 33 Q30 38 22 34 Q12 35 10 28 Q5 28 10 20 Z" stroke="rgba(255,179,0,.4)" stroke-width="1"/><path d="M95 20 L115 20" stroke="rgba(255,179,0,.3)" stroke-width="1"/></svg>
+        <svg class="qr-cloud left" viewBox="0 0 120 40" fill="none"><path d="M10 20 Q5 20 5 15 Q5 8 12 8 Q15 2 25 5 Q35 0 42 8 Q55 3 60 12 Q70 8 72 18 Q80 15 82 22 Q88 25 85 30 Q80 35 72 32 Q65 38 58 33 Q48 38 40 33 Q30 38 22 34 Q12 35 10 28 Q5 28 10 20 Z" stroke="rgba(255,179,0,.4)" stroke-width="1"></path><path d="M95 20 L115 20" stroke="rgba(255,179,0,.3)" stroke-width="1"></path></svg>
+        <svg class="qr-cloud right" viewBox="0 0 120 40" fill="none"><path d="M10 20 Q5 20 5 15 Q5 8 12 8 Q15 2 25 5 Q35 0 42 8 Q55 3 60 12 Q70 8 72 18 Q80 15 82 22 Q88 25 85 30 Q80 35 72 32 Q65 38 58 33 Q48 38 40 33 Q30 38 22 34 Q12 35 10 28 Q5 28 10 20 Z" stroke="rgba(255,179,0,.4)" stroke-width="1"></path><path d="M95 20 L115 20" stroke="rgba(255,179,0,.3)" stroke-width="1"></path></svg>
       </div>
       <div class="qr-hint">扫码下载 <strong>机战：钢铁巨舰</strong><br>支持 iOS / 安卓 双端</div>
       <div class="dl-main" style="justify-content:center">
@@ -655,6 +655,7 @@ document.querySelectorAll('.nav-links a').forEach(function(a){
   });
 });
 </script>
+
 
 
 </body></html>
