@@ -306,7 +306,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       <span class="name">机战：钢铁巨舰</span>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="#hero" class="">首页</a>
+      <a href="#hero" class="active">首页</a>
       <a href="#features" class="">游戏特色</a>
       <a href="#news" class="">新闻公告</a>
       <a href="#server">开服列表</a>
@@ -602,9 +602,14 @@ function renderNews(tab){
   list.innerHTML='';
   newsData[tab].forEach(function(item){
     var li=document.createElement('li');
+    li.style.cursor='pointer';
     li.innerHTML='<span class="news-cat '+item.cat+'">'+item.cat+'</span>'+
       '<span class="news-title">'+item.title+'</span>'+
       '<span class="news-date">'+item.date+'</span>';
+    if(item.detail){
+      li.title=item.detail;
+      li.onclick=function(){alert(item.title+'\\n\\n'+item.detail)};
+    }
     list.appendChild(li);
   });
 }
@@ -620,14 +625,14 @@ renderNews('latest');
 
 /* ===== Server List ===== */
 var servers=[
-  {name:'钢铁巨舰57区',time:'09-10 11:40',isNew:true},
-  {name:'钢铁巨舰56区',time:'09-10 11:40',isNew:true},
-  {name:'钢铁巨舰55区',time:'09-10 09:00'},
-  {name:'钢铁巨舰54区',time:'09-10 09:00'},
-  {name:'钢铁巨舰53区',time:'09-10 09:00'},
-  {name:'钢铁巨舰52区',time:'09-10 09:00'},
-  {name:'钢铁巨舰51区',time:'09-10 09:00'},
-  {name:'钢铁巨舰50区',time:'09-10 07:00'}
+  {name:'机战9区',time:'2026-08-06 10:00',isNew:true},
+  {name:'机战8区',time:'2026-08-05 10:00',isNew:true},
+  {name:'机战7区',time:'2026-08-04 10:00',isNew:true},
+  {name:'机战6区',time:'2026-06-12 10:00'},
+  {name:'机战5区',time:'2026-06-11 10:00'},
+  {name:'机战4区',time:'2026-06-10 10:00'},
+  {name:'机战3区',time:'2026-04-25 10:00'},
+  {name:'机战2区',time:'2026-04-24 10:00'}
 ];
 var sList=document.getElementById('serverList');
 servers.forEach(function(s){
